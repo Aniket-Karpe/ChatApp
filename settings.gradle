@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Android_Notes_App"
+rootProject.name = "Android_Chat_App"
 include ':app'

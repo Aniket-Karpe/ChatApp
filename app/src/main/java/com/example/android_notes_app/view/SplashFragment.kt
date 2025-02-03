@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.airbnb.lottie.LottieAnimationView
 import com.example.android_notes_app.R
 import com.example.android_notes_app.databinding.FragmentSplashBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class SplashFragment : Fragment() {
 
@@ -47,7 +48,15 @@ class SplashFragment : Fragment() {
     }
 
     private fun launchLoginActivity() {
-        findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null) {
+            // User is logged in, navigate to the main screen (e.g., HomeFragment)
+            findNavController().navigate(R.id.action_splashFragment_to_chatListFragment)
+        } else {
+            // User is not logged in, stay on the login screen
+            findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+
+        }
     }
 
 

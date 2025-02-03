@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.android_notes_app.R
@@ -34,65 +35,93 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-
-        // Initialize FirebaseAuth
-        mAuth = FirebaseAuth.getInstance()
-
-        // Configure Google Sign-In
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))  // Make sure to replace this with your client ID from Firebase
-            .requestEmail()
-            .build()
-
-        mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
-
-        binding.btnSignUp.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
-        }
-
-        binding.ivOtpLogin.setOnClickListener{
-            // OTP Login
-        }
-
-        binding.ivGoogleLogin.setOnClickListener {
-            signInWithGoogle()
-        }
-
         return binding.root
     }
 
-    private fun signInWithGoogle() {
-        val signInIntent = mGoogleSignInClient?.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+        mAuth = FirebaseAuth.getInstance()
 
-        if (requestCode == RC_SIGN_IN) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                val account = task.getResult(ApiException::class.java)
-                firebaseAuthWithGoogle(account)
-            } catch (e: ApiException) {
-                Log.w("GoogleSignIn", "Google sign-in failed", e)
+
+        binding.btnLogin.setOnClickListener {
+            val email = binding.txtEmail.text.toString().trim()
+            val password = binding.txtPassword.text.toString().trim()
+
+            if (email.isEmpty() || password.isEmpty()) {
+                binding.txtError.text = "Please enter email and password"
+                return@setOnClickListener
+            }
+
+            // Attempt to sign in
+            signInUser(email, password)
+        }
+
+        binding.apply {
+            btnSignUp.setOnClickListener{
+                findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
             }
         }
-    }
 
-    private fun firebaseAuthWithGoogle(account: GoogleSignInAccount?) {
-        val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
-        mAuth?.signInWithCredential(credential)
-            ?.addOnCompleteListener(requireActivity()) { task: Task<AuthResult> ->
+
+
+    }
+    private fun signInUser(email: String, password: String) {
+        showLoadingAnimation()
+        binding.txtError.text = ""
+
+        mAuth?.signInWithEmailAndPassword(email, password)
+            ?.addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    // Sign-in success, navigate to main activity
-                    Log.d("GoogleSignIn", "signInWithCredential:success")
-//                    findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
-                    findNavController().navigate(R.id.action_loginFragment_to_notesFragment)
+                    // Successful sign-in
+                    Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
+                    // Navigate to the next screen or activity
+                    findNavController().navigate(R.id.action_loginFragment_to_chatListFragment)
                 } else {
-                    // If sign-in fails, display a message to the user.
-                    Log.w("GoogleSignIn", "signInWithCredential:failure", task.exception)
+                    // Failed sign-in
+                    stopLoadingAnimation()
+                    binding.txtError.text = task.exception?.message
                 }
             }
     }
+
+    private fun showLoadingAnimation() {
+        binding.apply {
+            laLoading.visibility = View.VISIBLE
+            btnSignUp.visibility = View.GONE
+            btnLogin.visibility = View.GONE
+            txtError.visibility = View.GONE
+            txtEmail.visibility = View.GONE
+            txtPassword.visibility = View.GONE
+            txtHeading.visibility = View.GONE
+            txtSubHeading.visibility = View.GONE
+            txtEmailHeading.visibility = View.GONE
+            txtPasswordHeading.visibility = View.GONE
+            v1.visibility = View.GONE
+            v2.visibility = View.GONE
+        }
+    }
+    private fun stopLoadingAnimation() {
+        binding.apply {
+            laLoading.visibility = View.GONE
+            btnSignUp.visibility = View.VISIBLE
+            btnLogin.visibility = View.VISIBLE
+            txtError.visibility = View.VISIBLE
+            txtEmail.visibility = View.VISIBLE
+            txtPassword.visibility = View.VISIBLE
+            txtHeading.visibility = View.VISIBLE
+            txtSubHeading.visibility = View.VISIBLE
+            txtEmailHeading.visibility = View.VISIBLE
+            txtPasswordHeading.visibility = View.VISIBLE
+            v1.visibility = View.VISIBLE
+            v2.visibility = View.VISIBLE
+        }
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
 }

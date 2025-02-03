@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <!-- Image View to show an image in the notification -->
+    <ImageView
+        android:id="@+id/ivNotificationImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_google" />
+
+    <!-- Title TextView -->
+    <TextView
+        android:id="@+id/tvNotificationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title" />
+
+    <!-- Body TextView -->
+    <TextView
+        android:id="@+id/tvNotificationBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Body" />
+</LinearLayout>

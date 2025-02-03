@@ -10,9 +10,10 @@
         android:id="@+id/laSplash"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:lottie_speed="1.5"
+        app:lottie_speed="2"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="notes_splash.json"
+
+        app:lottie_fileName="anim_chat_splash.json"
         android:visibility="visible"/>
 
 </FrameLayout>
