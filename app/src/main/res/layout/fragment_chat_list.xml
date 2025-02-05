@@ -42,7 +42,7 @@
                 android:layout_marginLeft="@dimen/_14sdp"
                 android:layout_width="@dimen/_34sdp"
                 android:layout_height="@dimen/_34sdp"
-                android:src="@drawable/ic_logout"
+                android:src="@drawable/ic_logout_trans"
                 android:contentDescription="Cart" />
 
 

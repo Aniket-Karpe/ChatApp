@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.android_notes_app'
+    namespace 'com.astech.chatapp'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.android_notes_app"
+        applicationId "com.astech.chatapp"
         minSdk 24
         targetSdk 34
         versionCode 1
@@ -47,7 +47,7 @@ android {
 }
 
 dependencies {
-
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'com.google.android.material:material:1.12.0'

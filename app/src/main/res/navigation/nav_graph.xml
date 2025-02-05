@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.android_notes_app.view.SplashFragment"
+        android:name="com.astech.chatapp.view.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.android_notes_app.view.LoginFragment"
+        android:name="com.astech.chatapp.view.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
-        android:name="com.example.android_notes_app.view.SignupFragment"
+        android:name="com.astech.chatapp.view.SignupFragment"
         android:label="fragment_signup"
         tools:layout="@layout/fragment_signup" >
         <action
@@ -59,7 +59,7 @@
     </fragment>
     <fragment
         android:id="@+id/chatListFragment"
-        android:name="com.example.android_notes_app.view.ChatListFragment"
+        android:name="com.astech.chatapp.view.ChatListFragment"
         android:label="fragment_notes"
         tools:layout="@layout/fragment_chat_list" >
         <action
@@ -74,7 +74,7 @@
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.example.android_notes_app.ChatFragment"
+        android:name="com.astech.chatapp.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" >
         <action
@@ -84,7 +84,7 @@
     </fragment>
     <fragment
         android:id="@+id/UITestFragment"
-        android:name="com.example.android_notes_app.UITestFragment"
+        android:name="com.astech.chatapp.UITestFragment"
         android:label="fragment_u_i_test"
         tools:layout="@layout/fragment_u_i_test" />
 </navigation>

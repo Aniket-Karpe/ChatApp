@@ -12,7 +12,7 @@
     <string name="txt_password_hint">........</string>
     <string name="txt_sign_up">Sign Up</string>
     <string name="txt_already_have_account">Already have an account? Login</string>
-    <string name="txt_login_header">Welcome Back!</string>
+    <string name="txt_login_header">Welcome My Chat App!</string>
     <string name="txt_login_subheader">Login to start chatting...</string>
     <string name="txt_login">Login</string>
     <string name="txt_error_message">%1$S*</string>
