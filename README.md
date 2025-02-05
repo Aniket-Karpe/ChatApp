@@ -17,7 +17,7 @@ This project is a **real-time chat application** developed for Android. It allow
 *   **Loading Animations:** Provides visual feedback during loading operations [21, 23, 24].
     ![Demo Video](assets/demo.mp4)
 
-
+![Image](https://github.com/user-attachments/assets/46407bf5-bf59-4079-91a5-57b64760015b)
 
 ## 🛠️ Technologies Used
 
