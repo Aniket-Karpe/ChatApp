@@ -15,7 +15,12 @@ This project is a **real-time chat application** developed for Android. It allow
 *   **Push Notifications:** The app uses Firebase Cloud Messaging (FCM) to send and receive push notifications [16-20].
 *   **User Profile:** User profiles include a display name, email, and profile image [21, 22].
 *   **Loading Animations:** Provides visual feedback during loading operations [21, 23, 24].
-    ![Demo Video](assets/demo.mp4)
+   <div style="display: flex; justify-content: center;">
+  <video controls width="480" height="320">
+    <source src="assets/demo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 
 ![Image](https://github.com/user-attachments/assets/46407bf5-bf59-4079-91a5-57b64760015b)
 
